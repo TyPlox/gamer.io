@@ -1,0 +1,34 @@
+{
+  "name": "gamer.io",
+  "version": "0.0.1",
+  "description": "A bot with games",
+  "main": "src/app.ts",
+  "scripts": {
+    "dev": "nodemon --config nodemon.json src/app.ts",
+    "commands": "node scripts/deploy-commands.js"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "games"
+  ],
+  "author": "Diego Aquino",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/builders": "^0.11.0",
+    "@discordjs/opus": "^0.7.0",
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.6.0",
+    "dotenv": "^14.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint": "^8.7.0",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
