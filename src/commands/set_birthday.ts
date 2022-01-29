@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
 import moment from "moment";
 import Birthday from "../utils/db/crud/birthday.crud";
+import CustomClient from "../class/client";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,7 +13,7 @@ module.exports = {
                 .setDescription('Your birthday in the format "D/MM", sample: 3/11')
                 .setRequired(true)
         ),
-    async execute(interaction: CommandInteraction) {
+    async execute(client: CustomClient, interaction: CommandInteraction) {
         const date = interaction.options.getString('date');
         if (date) {
             const realDate = moment(`${date}/${new Date().getFullYear()}`, 'D/M/YYYY', true);

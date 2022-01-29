@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import {CommandInteraction, GuildMember} from "discord.js";
 import Poll from "../utils/db/crud/poll.crud";
+import CustomClient from "../class/client";
 
 const build = new SlashCommandBuilder()
     .setName('poll_end')
@@ -8,7 +9,7 @@ const build = new SlashCommandBuilder()
 
 module.exports = {
     data: build,
-    async execute(interaction: CommandInteraction) {
+    async execute(client: CustomClient, interaction: CommandInteraction) {
         const member = interaction.member as GuildMember;
         if (member?.permissions.has("ADMINISTRATOR")) {
             const guild = interaction.guildId || '';

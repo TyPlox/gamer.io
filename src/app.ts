@@ -1,18 +1,9 @@
-import { Intents, Client, Collection, CommandInteraction } from 'discord.js';
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { Intents } from 'discord.js';
+import CustomClient from './class/client';
 import fs from 'fs';
 import * as dotenv from 'dotenv';
 dotenv.config();
 import mongo from './utils/db/connect';
-
-interface ICommands {
-    data: Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
-    execute(interaction: CommandInteraction): Promise<void>
-}
-
-class CustomClient extends Client {
-    public commands = new Collection<string, ICommands>();
-}
 
 const client = new CustomClient({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -29,7 +20,7 @@ client.on('interactionCreate', async interaction => {
     if (!command) return;
 
     try {
-        await command.execute(interaction);
+        await command.execute(client, interaction);
     } catch (error) {
         console.error(error);
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });

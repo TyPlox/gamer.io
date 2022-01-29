@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
 import moment from "moment";
 import Birthday from "../utils/db/crud/birthday.crud";
+import CustomClient from "../class/client";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,7 +15,7 @@ module.exports = {
                 .addChoice('All', 'all')
                 .addChoice('Me', 'me')
         ),
-    async execute(interaction: CommandInteraction) {
+    async execute(client: CustomClient, interaction: CommandInteraction) {
         await interaction.reply({ content: `Test (?)`, ephemeral: true });
     }
 }

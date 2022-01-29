@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { CommandInteraction } from "discord.js";
 import Poll from "../utils/db/crud/poll.crud";
+import CustomClient from "../class/client";
 
 const build = new SlashCommandBuilder()
     .setName('poll_new')
@@ -30,7 +31,7 @@ build.addBooleanOption(
 
 module.exports = {
     data: build,
-    async execute(interaction: CommandInteraction) {
+    async execute(client: CustomClient, interaction: CommandInteraction) {
         const guild = interaction.guildId || '';
         const name = interaction.options.getString('name') || '';
         const stringOptions = interaction.options.getString('options') || '';
