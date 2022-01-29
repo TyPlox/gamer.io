@@ -5,7 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "dev": "nodemon --config nodemon.json src/app.ts",
-    "commands": "node scripts/deploy-commands.js"
+    "commands": "npx ts-node src/deploy-commands.ts"
   },
   "keywords": [
     "bot",
@@ -20,7 +20,9 @@
     "@discordjs/rest": "^0.2.0-canary.0",
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
-    "dotenv": "^14.2.0"
+    "dotenv": "^14.2.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.1.7"
   },
   "devDependencies": {
     "@types/node": "^17.0.10",

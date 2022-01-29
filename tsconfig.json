@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2017",
         "module": "commonjs",
         "lib": [
             "dom",
             "es5",
             "es6"
         ],
-        "sourceMap": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "sourceMap": false,
         "importHelpers": true,
         "strict": true,
         "moduleResolution": "node",
@@ -15,5 +17,6 @@
         "experimentalDecorators": true,
         "typeRoots": ["node_modules/@types"]
     },
-    "include": ["resources/js/**/*"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
 }
