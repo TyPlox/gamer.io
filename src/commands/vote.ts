@@ -22,7 +22,13 @@ module.exports = {
         const poll = await Poll.getById(guild);
         if (poll) {
             const vote = await Poll.addVote(guild, user, option);
-            await interaction.reply({ content: vote.msg, ephemeral: vote.ok ? poll.hide : false });
+            if (vote.ok && poll.hide) {
+                await interaction.reply({ content: 'Has votado satisfactoriamente' });
+            } else if (vote.ok && !poll.hide) {
+                await interaction.reply({ content: vote.msg });
+            } else {
+                await interaction.reply({ content: vote.msg, ephemeral: true });
+            }
         } else {
             await interaction.reply({ content: `No hay ninguna encuesta en curso`, ephemeral: true });
         }
