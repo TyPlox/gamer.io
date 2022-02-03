@@ -37,11 +37,11 @@ module.exports = {
                     if (keyA < keyB) return 1;
                     return 0;
                 });
-                let results = `Estos son los resultados de la encuesta "${poll.name}" :\n`;
+                let results = `Estos son los resultados de la encuesta "${poll.name}" :\n\n`;
                 total.forEach((e, i) => {
                     results += `${i + 1}. - ${e.name} | Votos: ${e.count}\n`;
                 });
-                results += '¡Gracias a todos por participar!';
+                results += '\n¡Gracias a todos por participar!';
                 Poll.delete(guild).then(async _ => {
                     await interaction.reply({ content: results});
                 }).catch(async _ => {

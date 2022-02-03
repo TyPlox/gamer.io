@@ -1,6 +1,6 @@
 import {model, Schema, Document, Types} from 'mongoose';
 
-interface IRespondent extends Document {
+export interface IRespondent extends Document {
     userId: string;
     vote: string;
 }

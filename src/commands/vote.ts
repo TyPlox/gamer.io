@@ -23,7 +23,7 @@ module.exports = {
         const poll = await Poll.getById(guild);
         if (poll) {
             const vote = await Poll.addVote(guild, user, option);
-            if (vote.ok) {
+            if (vote.ok && poll.hide) {
                 const cn = (client.channels.cache.find(c => c.id === interaction.channelId) as TextChannel);
                 cn.send(`<@${user}> ha votado sastifactoriamente`).then(async () => {
                     await interaction.reply({ content: vote.msg, ephemeral: true });
